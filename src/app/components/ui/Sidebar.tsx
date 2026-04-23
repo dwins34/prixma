@@ -14,10 +14,10 @@ const nav = [
   {
     label: 'Components',
     items: [
-      { href: '#button',   label: 'Button',       badge: '4 variants' },
-      { href: '#input',    label: 'Input Field' },
-      { href: '#chip',     label: 'Chip',         isNew: true },
-      { href: '#progress', label: 'Progress Bar' },
+      { href: '#button',   label: 'Button',   badge: '4 variants' },
+      { href: '#input',    label: 'Input' },
+      { href: '#chip',     label: 'Chip',     isNew: true },
+      { href: '#progress', label: 'Progress' },
       { href: '#stepper',  label: 'Stepper' },
       { href: '#uploader', label: 'Uploader' },
     ],
@@ -33,11 +33,11 @@ const nav = [
 ];
 
 export default function Sidebar() {
-  const [active, setActive] = useState('#button');
+  const [active, setActive] = useState('#installation');
 
   useEffect(() => {
     const handler = () => {
-      const ids = ['installation','button','input','chip','progress','stepper','uploader'];
+      const ids = ['installation','usage','tokens','button','input','chip','progress','stepper','uploader'];
       let cur = '';
       ids.forEach(id => {
         const el = document.getElementById(id);

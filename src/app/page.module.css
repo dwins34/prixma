@@ -66,6 +66,12 @@
   font-size: 22px; font-weight: 600;
   margin-bottom: 6px;
 }
+.groupLabel {
+  display: block;
+  font-size: 11px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--purple-400);
+  margin-bottom: 8px; margin-top: 64px;
+}
 .subTitle {
   font-family: var(--font-display);
   font-size: 17px; font-weight: 600;

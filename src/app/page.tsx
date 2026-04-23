@@ -342,9 +342,38 @@ export default function Home() {
               preview={<span style={{ color: 'var(--text-secondary)', fontSize: 14 }}>Choose a package manager tab below →</span>}
               previewStyle={{ minHeight: 60, padding: '16px 24px' }}
             />
+
+            {/* ── USAGE ───────────────────────────────────── */}
+            <h3 className={styles.subTitle} id="usage" style={{ marginTop: 40 }}>Usage</h3>
+            <p className={styles.sectionDesc}>Import styles in your root layout and start using components.</p>
+            <DemoBox
+              tabs={[
+                { label: 'Next.js', code: "import { Button } from 'prixma';\nimport 'prixma/dist/index.css';", filename: 'layout.tsx' },
+              ]}
+              preview={<Button>Default Prixma Button</Button>}
+            />
+
+            {/* ── TOKENS ──────────────────────────────────── */}
+            <h3 className={styles.subTitle} id="tokens" style={{ marginTop: 40 }}>Design Tokens</h3>
+            <p className={styles.sectionDesc}>Prixma is built on a robust set of CSS variables that you can override to match your brand.</p>
+            <div className={styles.tableWrap}>
+              <table className={styles.table}>
+                <thead>
+                  <tr><th>Token</th><th>Value</th><th>Variable</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Purple 500</td><td><span style={{ display: 'inline-block', width: 12, height: 12, background: '#6037d3', borderRadius: 2, marginRight: 8 }} />#6037D3</td><td><code>--purple-500</code></td></tr>
+                  <tr><td>Surface</td><td>#FFFFFF</td><td><code>--surface-default</code></td></tr>
+                  <tr><td>Radius</td><td>8px</td><td><code>--radius-m</code></td></tr>
+                </tbody>
+              </table>
+            </div>
           </section>
 
           <div className={styles.divider} />
+
+          {/* ── COMPONENTS ───────────────────────────────── */}
+          <span className={styles.groupLabel} id="components-header">UI Components</span>
 
           {/* ── BUTTON ───────────────────────────────────── */}
           <section id="button" className={styles.section}>
@@ -449,7 +478,7 @@ export default function Home() {
 
           {/* ── INPUT ───────────────────────────────────── */}
           <section id="input" className={styles.section}>
-            <h2 className={styles.sectionTitle}>Input Field</h2>
+            <h2 className={styles.sectionTitle}>Input</h2>
             <p className={styles.sectionDesc}>Text inputs with full state coverage — default, focus, error, success, and disabled — plus optional icons and helper text.</p>
 
             <DemoBox
@@ -526,7 +555,7 @@ export default function Home() {
 
           {/* ── PROGRESS ─────────────────────────────────── */}
           <section id="progress" className={styles.section}>
-            <h2 className={styles.sectionTitle}>Progress Bar</h2>
+            <h2 className={styles.sectionTitle}>Progress</h2>
             <p className={styles.sectionDesc}>Conveys progress through tasks, uploads, or multi-step flows. Three sizes available.</p>
             <DemoBox
               preview={<ProgressDemo />}
@@ -570,14 +599,16 @@ export default function Home() {
           <div className={styles.tocTitle}>On this page</div>
           {[
             { href: '#installation', label: 'Installation' },
+            { href: '#usage', label: 'Usage' },
+            { href: '#tokens', label: 'Design Tokens' },
             { href: '#button', label: 'Button' },
             { href: '#btn-sizes', label: 'Sizes', sub: true },
             { href: '#btn-states', label: 'States', sub: true },
             { href: '#btn-icons', label: 'With Icons', sub: true },
             { href: '#btn-api', label: 'API Reference', sub: true },
-            { href: '#input', label: 'Input Field' },
+            { href: '#input', label: 'Input' },
             { href: '#chip', label: 'Chip' },
-            { href: '#progress', label: 'Progress Bar' },
+            { href: '#progress', label: 'Progress' },
             { href: '#stepper', label: 'Stepper' },
             { href: '#uploader', label: 'Uploader' },
           ].map(l => (
