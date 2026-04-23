@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Design Tokens ──────────────────────────────────────── */
+:root {
+  --purple-50:  #f3eeff;
+  --purple-100: #e4d5ff;
+  --purple-200: #b79eff;
+  --purple-300: #9b7ef0;
+  --purple-400: #784cf5;
+  --purple-500: #6037d3;
+  --purple-600: #4a26b1;
+  --purple-700: #37188f;
+  --purple-800: #260e6e;
+
+  --red-400: #ff283c;
+  --red-500: #df1226;
+  --red-600: #b60012;
+  --red-disabled: #ff9ca5;
+
+  --surface-default: #ffffff;
+  --surface-elevated: #f8f7fa;
+  --border-default: #dad9df;
+  --border-subtle: #f5f4f7;
+  --text-default: #3a3741;
+  --text-secondary: #6b6876;
+  --text-disabled: #c1bfc8;
+  --shadow-base: rgba(58,55,65,0.08);
+  --shadow-top: rgba(58,55,65,0.12);
+
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-l: 16px;
+  --radius-xl: 24px;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --sidebar-width: 260px;
+  --toc-width: 220px;
+  --header-height: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--text-default);
+  background: var(--surface-default);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 99px; }

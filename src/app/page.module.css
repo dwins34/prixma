@@ -1,0 +1,202 @@
+/* ── Layout ──────────────────────────────────────── */
+.layout {
+  display: flex;
+  padding-top: var(--header-height);
+  min-height: 100vh;
+}
+.main {
+  margin-left: var(--sidebar-width);
+  margin-right: var(--toc-width);
+  flex: 1;
+  max-width: 900px;
+  padding: 48px 56px 96px;
+}
+
+/* ── TOC ─────────────────────────────────────────── */
+.toc {
+  position: fixed; right: 0;
+  top: var(--header-height); bottom: 0;
+  width: var(--toc-width);
+  padding: 32px 20px;
+  overflow-y: auto;
+  border-left: 1px solid var(--border-default);
+  background: var(--surface-default);
+}
+.tocTitle {
+  font-size: 11px; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.tocLink {
+  display: block; padding: 4px 0 4px 12px;
+  font-size: 12.5px; color: var(--text-secondary);
+  text-decoration: none;
+  border-left: 1px solid var(--border-default);
+  transition: all .15s; margin-bottom: 2px;
+}
+.tocLink:hover { color: var(--purple-500); border-left-color: var(--purple-300); }
+.tocSub { padding-left: 24px; }
+
+/* ── Page header ─────────────────────────────────── */
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: 40px; font-weight: 700; line-height: 1.15;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--text-default) 40%, var(--purple-500));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.pageSubtitle {
+  font-size: 17px; color: var(--text-secondary);
+  line-height: 1.6; margin-bottom: 32px; max-width: 600px;
+}
+.badgeRow { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500;
+  padding: 4px 10px; border-radius: 99px;
+  border: 1px solid var(--border-default); color: var(--text-secondary);
+}
+.chipPurple { background: var(--purple-50); border-color: var(--purple-200); color: var(--purple-600); }
+.chipGreen  { background: #f0fdf4; border-color: #bbf7d0; color: #16a34a; }
+
+/* ── Section ─────────────────────────────────────── */
+.section { margin-bottom: 56px; scroll-margin-top: 80px; }
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 600;
+  margin-bottom: 6px;
+}
+.subTitle {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 600;
+  margin-bottom: 8px; margin-top: 32px;
+  scroll-margin-top: 80px;
+}
+.sectionDesc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.65; }
+.divider { height: 1px; background: var(--border-default); margin: 48px 0; }
+
+/* ── Props table ─────────────────────────────────── */
+.tableWrap { border: 1px solid var(--border-default); border-radius: var(--radius-m); overflow: hidden; }
+.table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.table th {
+  text-align: left; padding: 10px 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text-secondary); background: var(--surface-elevated);
+  border-bottom: 1px solid var(--border-default);
+}
+.table td { padding: 12px 14px; vertical-align: top; border-bottom: 1px solid var(--border-subtle); }
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: var(--surface-elevated); }
+.propName  { font-family: var(--font-mono); font-size: 12.5px; color: var(--purple-600); font-weight: 500; }
+.propType  { font-family: var(--font-mono); font-size: 12px; color: #0369a1; }
+.propDefault { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
+.propDesc  { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ── Input ───────────────────────────────────────── */
+.inputGroup { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 220px; }
+.inputLabel { font-size: 13px; font-weight: 500; color: var(--text-default); }
+.inputWrap { position: relative; }
+.input {
+  width: 100%; height: 40px; padding: 0 12px;
+  border: 1px solid var(--border-default); border-radius: var(--radius-m);
+  font-family: var(--font-body); font-size: 14px;
+  color: var(--text-default); background: white; outline: none;
+  transition: all .15s;
+  box-shadow: 0 1px 4px var(--shadow-top);
+}
+.input::placeholder { color: var(--text-disabled); }
+.input:hover { border-color: var(--purple-300); }
+.input:focus { border-color: var(--purple-500); box-shadow: 0 0 0 3px rgba(96,55,211,0.15); }
+.inputPadLeft { padding-left: 36px; }
+.inputError { border-color: var(--red-500) !important; }
+.inputSuccess { border-color: #16a34a !important; }
+.inputIcon {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 16px; color: var(--text-secondary); pointer-events: none;
+}
+.iconLeft { left: 12px; }
+.inputHint { font-size: 12px; color: var(--text-secondary); }
+.inputErrorMsg { font-size: 12px; color: var(--red-500); }
+.inputSuccessMsg { font-size: 12px; color: #16a34a; }
+
+/* ── Chip component ──────────────────────────────── */
+.chipComp {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 99px;
+  font-size: 13px; font-weight: 500; border: 1px solid;
+  transition: all .15s;
+}
+.chipDefault { background: var(--surface-elevated); border-color: var(--border-default); color: var(--text-default); }
+.chipPurpleComp { background: var(--purple-50); border-color: var(--purple-200); color: var(--purple-600); }
+.chipGreenComp  { background: #f0fdf4; border-color: #bbf7d0; color: #16a34a; }
+.chipRedComp    { background: #fff1f2; border-color: #fecdd3; color: var(--red-600); }
+
+/* ── Progress ───────────────────────────────────── */
+.progressTrack {
+  width: 100%; background: var(--surface-elevated);
+  border-radius: 99px; overflow: hidden;
+  border: 1px solid var(--border-default);
+}
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+.progressFill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--purple-600), var(--purple-400));
+  transition: width .6s cubic-bezier(.4,0,.2,1);
+  position: relative; overflow: hidden;
+}
+.progressFill::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  animation: shimmer 2s infinite;
+}
+
+/* ── Stepper ─────────────────────────────────────── */
+.stepper { display: flex; align-items: center; gap: 0; }
+.stepItem { display: flex; flex-direction: column; align-items: center; }
+.stepCircle {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600; font-family: var(--font-display);
+  border: 2px solid; transition: all .2s;
+}
+.done   { background: var(--purple-500) !important; border-color: var(--purple-500) !important; color: white !important; }
+.active { background: white !important; border-color: var(--purple-500) !important; color: var(--purple-500) !important; }
+.todo   { background: white !important; border-color: var(--border-default) !important; color: var(--text-secondary) !important; }
+.stepLabel { font-size: 12px; font-weight: 500; margin-top: 4px; }
+.stepActive { color: var(--purple-500); }
+.stepTodo   { color: var(--text-secondary); }
+.connector { height: 2px; width: 48px; background: var(--border-default); margin: 0 4px 16px; transition: background .2s; }
+.connectorDone { background: var(--purple-500); }
+
+/* ── Uploader ────────────────────────────────────── */
+.uploader {
+  width: 100%; padding: 32px;
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-l);
+  text-align: center; cursor: pointer;
+  transition: all .2s; background: white;
+}
+.uploader:hover, .dragOver {
+  border-color: var(--purple-400) !important;
+  background: var(--purple-50) !important;
+}
+
+/* ── Footer ─────────────────────────────────────── */
+.footer {
+  margin-top: 64px; padding-top: 32px;
+  border-top: 1px solid var(--border-default);
+  text-align: center; color: var(--text-secondary); font-size: 13px;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 1200px) {
+  .toc { display: none; }
+  .main { margin-right: 0; }
+}
+@media (max-width: 768px) {
+  .main { margin-left: 0; padding: 32px 20px 64px; }
+}
