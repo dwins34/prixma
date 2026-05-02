@@ -16,6 +16,12 @@ export const pkgImport = (component: string) =>
 export const pkgImportMulti = (...components: string[]) =>
   `import { ${components.join(', ')} } from '${PACKAGE_NAME}';`;
 
+/*
+Example 
+npm version patch --no-git-tag-version
+npm run build:lib
+npm publish --access=public
+*/
 // Install commands
 export const INSTALL_COMMANDS = {
   npm:  `npm install ${PACKAGE_NAME}`,
