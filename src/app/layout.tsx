@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Prixma — Component Library',
-  description: 'A beautifully crafted, accessible component library built directly from your Figma design system. Purple-forward, token-driven, and drop-in ready.',
+  description: 'An open-source React component library with a built-in design system. Copy, install, and ship.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

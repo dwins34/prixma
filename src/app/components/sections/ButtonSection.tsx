@@ -19,7 +19,7 @@ const DownloadIcon = () => (
   </svg>
 );
 
-const VARIANTS_CODE_REACT = `import { Button } from 'prixma';
+const VARIANTS_CODE_REACT = `import { Button } from 'prixma-beta';
 
 <Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
@@ -27,7 +27,7 @@ const VARIANTS_CODE_REACT = `import { Button } from 'prixma';
 <Button variant="destructive">Delete</Button>`;
 
 const VARIANTS_CODE_NEXTJS = `'use client';
-import { Button } from 'prixma';
+import { Button } from 'prixma-beta';
 
 export default function Page() {
   return (
@@ -50,7 +50,7 @@ const SIZES_CODE_REACT = `<Button size="sm">Small</Button>
 <Button size="lg">Large</Button>`;
 
 const SIZES_CODE_NEXTJS = `'use client';
-import { Button } from 'prixma';
+import { Button } from 'prixma-beta';
 
 export default function Page() {
   return (
@@ -66,14 +66,14 @@ const SIZES_CODE_JS = `<button class="fp-btn fp-btn--primary fp-btn--sm">Small</
 <button class="fp-btn fp-btn--primary fp-btn--md">Medium</button>
 <button class="fp-btn fp-btn--primary fp-btn--lg">Large</button>`;
 
-const ICONS_CODE_REACT = `import { Button } from 'prixma';
+const ICONS_CODE_REACT = `import { Button } from 'prixma-beta';
 
 <Button variant="primary" leadingIcon={<MailIcon />}>Send email</Button>
 <Button variant="secondary" trailingIcon={<DownloadIcon />}>Download</Button>
 <Button variant="secondary" iconButton><MailIcon /></Button>`;
 
 const ICONS_CODE_NEXTJS = `'use client';
-import { Button } from 'prixma';
+import { Button } from 'prixma-beta';
 
 export default function Page() {
   return (

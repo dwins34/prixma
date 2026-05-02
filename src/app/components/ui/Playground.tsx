@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './Playground.module.css';
 import CodeBlock from './CodeBlock';
+import { PACKAGE_NAME } from '../../../config';
 
 export type ControlOption = {
   name: string;
@@ -55,7 +56,7 @@ export default function Playground({
 
     if (type === 'Next.js') {
       return `'use client';
-import { ${componentName} } from 'prixma';
+import { ${componentName} } from ${PACKAGE_NAME};
 
 export default function Page() {
   return (
@@ -74,7 +75,7 @@ export default function Page() {
 </div>`;
     }
 
-    return `import { ${componentName} } from 'prixma';
+    return `import { ${componentName} } from ${PACKAGE_NAME};
 
 <${componentName} 
   ${propString.split(' ').join('\n  ')} 

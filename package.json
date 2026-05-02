@@ -1,6 +1,6 @@
 {
   "name": "prixma-beta",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A meticulously crafted component library. Dark-first and ready for production. (Beta — renames to prixma on stable release)",
   "keywords": [
     "react",

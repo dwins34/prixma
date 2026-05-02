@@ -7,7 +7,7 @@ import Playground from '../ui/Playground';
 import PageToc from '../ui/PageToc';
 import styles from '../docs.module.css';
 
-const DEMO_CODE_REACT = `import { Stepper } from 'prixma';
+const DEMO_CODE_REACT = `import { Stepper } from 'prixma-beta';
 
 const steps = [
   { title: 'Account',  subheader: 'Your profile details', status: 'completed' },
@@ -19,7 +19,7 @@ const steps = [
 
 const DEMO_CODE_NEXTJS = `'use client';
 import { useState } from 'react';
-import { Stepper } from 'prixma';
+import { Stepper } from 'prixma-beta';
 
 const STEPS = ['Account', 'Payment', 'Review'];
 

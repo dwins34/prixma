@@ -5,7 +5,7 @@ import Playground from '../ui/Playground';
 import PageToc from '../ui/PageToc';
 import styles from '../docs.module.css';
 
-const VARIANTS_CODE_REACT = `import { Chip } from 'prixma';
+const VARIANTS_CODE_REACT = `import { Chip } from 'prixma-beta';
 
 <Chip variant="default">Default</Chip>
 <Chip variant="purple" dot>Active</Chip>
@@ -13,7 +13,7 @@ const VARIANTS_CODE_REACT = `import { Chip } from 'prixma';
 <Chip variant="red" dot>Error</Chip>`;
 
 const VARIANTS_CODE_NEXTJS = `'use client';
-import { Chip } from 'prixma';
+import { Chip } from 'prixma-beta';
 
 export default function Page() {
   return (

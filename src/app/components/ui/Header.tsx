@@ -44,8 +44,8 @@ export default function Header({ activePage = 'home' }: HeaderProps) {
         </a>
       </nav>
 
-      <a href="/components" className={styles.getStarted}>
-        Get started
+      <a href="https://www.npmjs.com/package/prixma-beta" target="_blank" rel="noopener noreferrer" className={styles.getStarted}>
+        npm install
       </a>
     </header>
   );

@@ -5,7 +5,7 @@ import Playground from '../ui/Playground';
 import PageToc from '../ui/PageToc';
 import styles from '../docs.module.css';
 
-const STATES_CODE_REACT = `import { Checkbox } from 'prixma';
+const STATES_CODE_REACT = `import { Checkbox } from 'prixma-beta';
 
 <Checkbox label="Accept terms and conditions" />
 <Checkbox label="Pre-checked" checked onChange={() => {}} />
@@ -15,7 +15,7 @@ const STATES_CODE_REACT = `import { Checkbox } from 'prixma';
 
 const STATES_CODE_NEXTJS = `'use client';
 import { useState } from 'react';
-import { Checkbox } from 'prixma';
+import { Checkbox } from 'prixma-beta';
 
 export default function Page() {
   const [checked, setChecked] = useState(false);

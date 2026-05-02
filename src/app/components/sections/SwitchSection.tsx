@@ -5,7 +5,7 @@ import Playground from '../ui/Playground';
 import PageToc from '../ui/PageToc';
 import styles from '../docs.module.css';
 
-const STATES_CODE_REACT = `import { Switch } from 'prixma';
+const STATES_CODE_REACT = `import { Switch } from 'prixma-beta';
 
 <Switch label="Notifications enabled" checked onChange={() => {}} />
 <Switch label="Dark mode" />
@@ -13,7 +13,7 @@ const STATES_CODE_REACT = `import { Switch } from 'prixma';
 
 const STATES_CODE_NEXTJS = `'use client';
 import { useState } from 'react';
-import { Switch } from 'prixma';
+import { Switch } from 'prixma-beta';
 
 export default function Page() {
   const [enabled, setEnabled] = useState(false);

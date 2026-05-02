@@ -4,7 +4,7 @@ import DemoBox from '../ui/DemoBox';
 import PageToc from '../ui/PageToc';
 import styles from '../docs.module.css';
 
-const DEMO_CODE_REACT = `import { ProgressBar } from 'prixma';
+const DEMO_CODE_REACT = `import { ProgressBar } from 'prixma-beta';
 
 // Determinate
 <ProgressBar value={62} size="md" label="Uploading..." />
@@ -16,7 +16,7 @@ const DEMO_CODE_REACT = `import { ProgressBar } from 'prixma';
 
 const DEMO_CODE_NEXTJS = `'use client';
 import { useState } from 'react';
-import { ProgressBar } from 'prixma';
+import { ProgressBar } from 'prixma-beta';
 
 export default function Page() {
   const [progress, setProgress] = useState(0);
@@ -59,7 +59,7 @@ function ProgressDemo() {
   );
 }
 
-const REACT_CODE = `import { ProgressBar } from 'prixma';
+const REACT_CODE = `import { ProgressBar } from 'prixma-beta';
 
 <ProgressBar value={62} label="Processing" />
 <ProgressBar indeterminate label="Loading..." />`;

@@ -3,6 +3,7 @@ import Button from '../ui/Button';
 import DemoBox from '../ui/DemoBox';
 import PageToc from '../ui/PageToc';
 import styles from '../docs.module.css';
+import { PACKAGE_NAME, INSTALL_COMMANDS, CSS_IMPORT } from '../../../config';
 
 export default function InstallationPage() {
   return (
@@ -15,8 +16,7 @@ export default function InstallationPage() {
 
       <h1 className={styles.pageTitle}>Prixma</h1>
       <p className={styles.pageSubtitle}>
-        A beautifully crafted, accessible component library built directly from your Figma design system.
-        Purple-forward, token-driven, and drop-in ready for React, Next.js, and vanilla JavaScript.
+        An open-source React component library with a built-in design system. Copy, install, and ship.
       </p>
       <div className={styles.badgeRow}>
         {['⚡ Zero dependency', '🎨 Figma token synced', '✓ Accessible (WCAG 2.1 AA)', 'TypeScript ready'].map(b => (
@@ -29,9 +29,9 @@ export default function InstallationPage() {
         <p className={styles.sectionDesc}>Install the package with your favourite package manager.</p>
         <DemoBox
           tabs={[
-            { label: 'npm',  code: 'npm install prixma',  filename: 'terminal' },
-            { label: 'yarn', code: 'yarn add prixma',     filename: 'terminal' },
-            { label: 'pnpm', code: 'pnpm add prixma',     filename: 'terminal' },
+            { label: 'npm',  code: INSTALL_COMMANDS.npm,  filename: 'terminal' },
+            { label: 'yarn', code: INSTALL_COMMANDS.yarn, filename: 'terminal' },
+            { label: 'pnpm', code: INSTALL_COMMANDS.pnpm, filename: 'terminal' },
           ]}
           preview={<span style={{ color: 'var(--text-secondary)', fontSize: 14 }}>Choose a package manager tab below →</span>}
           previewStyle={{ minHeight: 60, padding: '16px 24px' }}
@@ -44,7 +44,7 @@ export default function InstallationPage() {
         <h2 className={styles.sectionTitle}>Usage</h2>
         <p className={styles.sectionDesc}>Import styles in your root layout and start using components.</p>
         <DemoBox
-          tabs={[{ label: 'Next.js', code: "import { Button } from 'prixma';\nimport 'prixma/dist/index.css';", filename: 'layout.tsx' }]}
+          tabs={[{ label: 'Next.js', code: `import { Button } from '${PACKAGE_NAME}';\nimport '${CSS_IMPORT}';`, filename: 'layout.tsx' }]}
           preview={<Button>Default Prixma Button</Button>}
         />
       </section>

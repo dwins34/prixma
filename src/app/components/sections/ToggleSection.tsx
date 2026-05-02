@@ -5,7 +5,7 @@ import Playground from '../ui/Playground';
 import PageToc from '../ui/PageToc';
 import styles from '../docs.module.css';
 
-const DEMO_CODE_REACT = `import { Toggle } from 'prixma';
+const DEMO_CODE_REACT = `import { Toggle } from 'prixma-beta';
 
 <Toggle options={['List', 'Grid']} value="List" onChange={(v) => console.log(v)} />
 <Toggle options={['Monthly', 'Annual']} value="Annual" onChange={(v) => console.log(v)} />
@@ -13,7 +13,7 @@ const DEMO_CODE_REACT = `import { Toggle } from 'prixma';
 
 const DEMO_CODE_NEXTJS = `'use client';
 import { useState } from 'react';
-import { Toggle } from 'prixma';
+import { Toggle } from 'prixma-beta';
 
 export default function Page() {
   const [view, setView] = useState('List');

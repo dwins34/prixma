@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Header from './components/ui/Header';
 import styles from './page.module.css';
+import { COMPONENTS } from '../config';
 
 /* ── Feature icon assets (from Figma, permanent via public folder approach) ──
    Two types of icons in Figma:
@@ -26,16 +27,6 @@ const FEATURES = [
   { img: imgIconTyped,   bordered: false, bold: 'Typed &',     muted: ' documented',   desc: 'Full TypeScript definitions and inline JSDoc on every prop. Your IDE becomes a documentation browser.', swapColors: true },
 ];
 
-const TABS = [
-  { label: 'Buttons',      href: '/components/button' },
-  { label: 'Input Fields', href: '/components/input' },
-  { label: 'Stepper',      href: '/components/stepper' },
-  { label: 'Chips',        href: '/components/chip' },
-  { label: 'Uploader',     href: '/components/uploader' },
-  { label: 'Progress Bar', href: '/components/progress' },
-  { label: 'Switch',       href: '/components/switch' },
-  { label: 'Toggle',       href: '/components/toggle' },
-];
 
 function FeatureIcon({ img, bordered }: { img: string; bordered: boolean }) {
   return (
@@ -97,7 +88,7 @@ export default function Home() {
                   </p>
                 </div>
                 <p className={styles.heroSub}>
-                  A meticulously crafted component library. Dark-first and ready for production. No compromise on quality.
+                  An open-source React component library with a built-in design system. Copy, install, and ship.
                 </p>
               </div>
               <div className={styles.ctaRow}>
@@ -119,8 +110,8 @@ export default function Home() {
 
           {/* ── TAB STRIP ── */}
           <div className={styles.tabStrip}>
-            {TABS.map((tab, i) => (
-              <Link key={tab.label} href={tab.href} className={`${styles.tab} ${i === 0 ? styles.tabFirst : ''}`}>
+            {COMPONENTS.map((tab, i) => (
+              <Link key={tab.slug} href={`/components/${tab.slug}`} className={`${styles.tab} ${i === 0 ? styles.tabFirst : ''}`}>
                 {tab.label}
               </Link>
             ))}

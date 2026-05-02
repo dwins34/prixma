@@ -4,7 +4,7 @@ import DemoBox from '../ui/DemoBox';
 import PageToc from '../ui/PageToc';
 import styles from '../docs.module.css';
 
-const DEMO_CODE_REACT = `import { Uploader } from 'prixma';
+const DEMO_CODE_REACT = `import { Uploader } from 'prixma-beta';
 
 <Uploader
   accept=".png,.jpg,.pdf"
@@ -14,7 +14,7 @@ const DEMO_CODE_REACT = `import { Uploader } from 'prixma';
 />`;
 
 const DEMO_CODE_NEXTJS = `'use client';
-import { Uploader } from 'prixma';
+import { Uploader } from 'prixma-beta';
 
 export default function Page() {
   return (

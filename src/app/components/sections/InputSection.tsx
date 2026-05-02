@@ -13,7 +13,7 @@ const MailIcon = () => (
 );
 
 /* ── Code snippets ───────────────────────── */
-const TOP_CODE_REACT = `import { Input } from 'prixma';
+const TOP_CODE_REACT = `import { Input } from 'prixma-beta';
 
 // Default
 <Input label="Work email" placeholder="you@example.com" hint="We'll use this to send updates." />
@@ -28,7 +28,7 @@ const TOP_CODE_REACT = `import { Input } from 'prixma';
 <Input label="Account ID" placeholder="ABCDE12345" disabled />`;
 
 const TOP_CODE_NEXTJS = `'use client';
-import { Input } from 'prixma';
+import { Input } from 'prixma-beta';
 
 export default function Page() {
   return (
@@ -66,7 +66,7 @@ const TOP_CODE_JS = `<!-- Default -->
   <span class="fp-input-error">Enter a valid Account ID.</span>
 </div>`;
 
-const FLOATING_CODE_REACT = `import { Input } from 'prixma';
+const FLOATING_CODE_REACT = `import { Input } from 'prixma-beta';
 
 // Floating label — label moves up on focus/fill
 <Input variant="floating" label="Email" hint="We'll use this to send updates." />
@@ -75,7 +75,7 @@ const FLOATING_CODE_REACT = `import { Input } from 'prixma';
 
 const FLOATING_CODE_NEXTJS = `'use client';
 import { useState } from 'react';
-import { Input } from 'prixma';
+import { Input } from 'prixma-beta';
 
 export default function Page() {
   const [email, setEmail] = useState('');
@@ -98,14 +98,14 @@ const FLOATING_CODE_JS = `<div class="fp-input-group fp-input--floating">
   <span class="fp-input-hint">We'll use this to send updates.</span>
 </div>`;
 
-const INLINE_CODE_REACT = `import { Input } from 'prixma';
+const INLINE_CODE_REACT = `import { Input } from 'prixma-beta';
 
 // Inline label — label stays inside as small text above value
 <Input variant="inline" label="Email" placeholder="you@example.com" />
 <Input variant="inline" label="Account ID" error="Enter a valid Account ID." />`;
 
 const INLINE_CODE_NEXTJS = `'use client';
-import { Input } from 'prixma';
+import { Input } from 'prixma-beta';
 
 export default function Page() {
   return (
