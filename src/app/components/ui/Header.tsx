@@ -33,8 +33,10 @@ export default function Header({ activePage = 'home' }: HeaderProps) {
           Components
         </a>
         <a
-          href="#blog"
-          className={`${styles.navLink} ${hovered === 'blog' ? styles.navHovered : ''}`}
+          href="https://designedbyswapnil.framer.website/blog"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${styles.navLink} ${activePage === 'blog' ? styles.navActive : ''} ${hovered === 'blog' ? styles.navHovered : ''}`}
           onMouseEnter={() => setHovered('blog')}
           onMouseLeave={() => setHovered(null)}
         >

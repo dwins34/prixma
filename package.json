@@ -1,17 +1,44 @@
 {
-  "name": "prixma",
-  "version": "1.0.0",
-  "private": true,
+  "name": "prixma-beta",
+  "version": "0.1.0",
+  "description": "A meticulously crafted component library. Dark-first and ready for production. (Beta — renames to prixma on stable release)",
+  "keywords": [
+    "react",
+    "components",
+    "design-system",
+    "ui",
+    "typescript"
+  ],
+  "author": "Divya Gupta",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:lib": "tsup",
     "start": "next start",
     "lint": "next lint"
   },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
   "dependencies": {
     "next": "14.2.3",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": ">=18",
+    "react-dom": ">=18",
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
@@ -19,8 +46,10 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "typescript": "^5",
+    "esbuild-plugin-css-modules": "^0.3.0",
     "eslint": "^8",
-    "eslint-config-next": "14.2.3"
+    "eslint-config-next": "14.2.3",
+    "tsup": "^8.5.1",
+    "typescript": "^5"
   }
 }

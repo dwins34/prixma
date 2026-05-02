@@ -1,0 +1,931 @@
+/* src/app/components/ui/Button.module.css */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s,
+    transform 0.1s;
+  white-space: nowrap;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+}
+.btn:focus-visible {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--purple-500);
+}
+.btn:disabled {
+  cursor: not-allowed;
+  transform: none !important;
+}
+.primary {
+  background: var(--purple-500);
+  color: white;
+  box-shadow:
+    0px 1px 4px 0px var(--shadow-top),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.25),
+    inset -1px -1px 2px rgba(58, 55, 65, 0.15);
+}
+.primary:hover:not(:disabled) {
+  background: var(--purple-400);
+  transform: translateY(-1px);
+}
+.primary:active:not(:disabled) {
+  background: var(--purple-600);
+  transform: translateY(0);
+}
+.primary:disabled {
+  background: var(--purple-200);
+  box-shadow: none;
+}
+.secondary {
+  background: white;
+  color: var(--text-default);
+  border: 1px solid var(--border-default);
+  box-shadow: 0px 1px 4px 0px var(--shadow-top);
+}
+.secondary:hover:not(:disabled) {
+  border-color: var(--purple-300);
+  transform: translateY(-1px);
+}
+.secondary:active:not(:disabled) {
+  background: var(--surface-elevated);
+  transform: translateY(0);
+}
+.secondary:disabled {
+  color: var(--text-disabled);
+  box-shadow: none;
+}
+.text {
+  background: transparent;
+  color: var(--purple-500);
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.text:hover:not(:disabled) {
+  color: var(--purple-600);
+}
+.text:active:not(:disabled) {
+  color: var(--purple-700);
+}
+.text:disabled {
+  color: var(--purple-200);
+}
+.destructive {
+  background: var(--red-500);
+  color: white;
+  box-shadow:
+    0px 1px 4px 0px var(--shadow-top),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.25),
+    inset -1px -1px 2px rgba(58, 55, 65, 0.15);
+}
+.destructive:hover:not(:disabled) {
+  background: var(--red-400);
+  transform: translateY(-1px);
+}
+.destructive:active:not(:disabled) {
+  background: var(--red-600);
+  transform: translateY(0);
+}
+.destructive:disabled {
+  background: var(--red-disabled);
+  box-shadow: none;
+}
+.sm {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: var(--radius-s);
+  font-size: 13px;
+}
+.md {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius-s);
+  font-size: 14px;
+}
+.lg {
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--radius-m);
+  font-size: 15px;
+}
+.iconBtn.sm {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+.iconBtn.md {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+.iconBtn.lg {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+}
+.fullWidth {
+  width: 100%;
+}
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+.spinnerDark {
+  border-color: rgba(96, 55, 211, 0.2);
+  border-top-color: var(--purple-500);
+}
+
+/* src/app/components/ui/Input.module.css */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #3a3741;
+}
+.optional {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: #65626f;
+}
+.required {
+  color: #b60012;
+}
+.fieldWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  background: white;
+  border: 1px solid #dad9df;
+  border-radius: 8px;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.sm .fieldWrap {
+  height: 32px;
+  padding: 0 12px;
+}
+.md .fieldWrap {
+  height: 40px;
+  padding: 0 12px;
+}
+.lg .fieldWrap {
+  height: 48px;
+  padding: 0 16px;
+}
+.fieldWrap:hover {
+  border-color: #c1bfc8;
+}
+.fieldWrap:focus-within {
+  border-color: #4a26b1;
+  box-shadow: 0px 0px 0px 2px #f2edff;
+}
+.error .fieldWrap {
+  border-color: #b60012;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+.error .fieldWrap:focus-within {
+  border-color: #b60012;
+  box-shadow: 0px 0px 0px 2px #ffecec;
+}
+.success .fieldWrap {
+  border-color: #16a34a;
+}
+.success .fieldWrap:focus-within {
+  border-color: #16a34a;
+  box-shadow: 0px 0px 0px 2px #dcfce7;
+}
+.disabled .fieldWrap,
+.disabled .fieldWrap:hover,
+.disabled .fieldWrap:focus-within {
+  background: #f8f7fa;
+  border-color: #dad9df;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  cursor: not-allowed;
+}
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3a3741;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+.input::placeholder {
+  color: #c1bfc8;
+}
+.input:disabled {
+  color: #c1bfc8;
+  cursor: not-allowed;
+}
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #65626f;
+  pointer-events: none;
+}
+.helperText {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #65626f;
+}
+.errorText {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #b60012;
+}
+.floatingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+.floatingField {
+  position: relative;
+  background: white;
+  border: 1px solid #dad9df;
+  border-radius: 8px;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 6px;
+  transition: border-color 0.15s;
+  overflow: visible;
+}
+.floatingField:hover {
+  border-color: #c1bfc8;
+}
+.floatingField:focus-within {
+  border-color: #4a26b1;
+  box-shadow: 0px 0px 0px 2px #f2edff;
+}
+.floatingError .floatingField {
+  border-color: #b60012;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+.floatingError .floatingField:focus-within {
+  border-color: #b60012;
+  box-shadow: 0px 0px 0px 2px #ffecec;
+}
+.floatingDisabled .floatingField,
+.floatingDisabled .floatingField:hover,
+.floatingDisabled .floatingField:focus-within {
+  background: #f8f7fa;
+  border-color: #dad9df;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+.floatingInner {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.floatingLabel {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #65626f;
+  background: transparent;
+  padding: 0;
+  border-radius: 2px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1;
+  transition:
+    top 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.18s,
+    background 0.18s,
+    padding 0.18s,
+    left 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.floatingLabel.floated {
+  top: -1px;
+  transform: translateY(-50%);
+  left: -4px;
+  color: #3a3741;
+  background: white;
+  padding: 0 4px;
+}
+.floatingLabel.floatedFocus {
+  color: #4a26b1;
+}
+.floatingInput {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3a3741;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+.floatingInput.notFloated {
+  color: transparent;
+  caret-color: #3a3741;
+}
+.floatingInput::placeholder {
+  color: transparent;
+}
+.floatingInput:disabled {
+  color: #c1bfc8;
+  cursor: not-allowed;
+}
+.inlineGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+.inlineField {
+  background: white;
+  border: 1px solid #dad9df;
+  border-radius: 8px;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 6px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.inlineField:hover {
+  border-color: #c1bfc8;
+}
+.inlineField:focus-within {
+  border-color: #4a26b1;
+  box-shadow: 0px 0px 0px 2px #f2edff;
+}
+.inlineError .inlineField {
+  border-color: #b60012;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+.inlineError .inlineField:focus-within {
+  border-color: #b60012;
+  box-shadow: 0px 0px 0px 2px #ffecec;
+}
+.inlineDisabled .inlineField,
+.inlineDisabled .inlineField:hover,
+.inlineDisabled .inlineField:focus-within {
+  background: #f8f7fa;
+  border-color: #dad9df;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+.inlineContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.inlineLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #65626f;
+  white-space: nowrap;
+}
+.inlineInput {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3a3741;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+.inlineInput::placeholder {
+  color: #c1bfc8;
+}
+.inlineInput:disabled {
+  color: #c1bfc8;
+  cursor: not-allowed;
+}
+
+/* src/app/components/ui/Checkbox.module.css */
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s;
+  flex-shrink: 0;
+  box-shadow: 0px 1px 4px 0px var(--shadow-top);
+}
+.container:not(.disabled):hover .checkmark {
+  border-color: var(--purple-400);
+}
+.input:checked ~ .checkmark {
+  background: var(--purple-500);
+  border-color: var(--purple-500);
+}
+.input:focus-visible ~ .checkmark {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--purple-200);
+}
+.error .checkmark {
+  border-color: var(--red-500);
+}
+.error .input:checked ~ .checkmark {
+  background: var(--red-500);
+  border-color: var(--red-500);
+}
+.checkmark::after {
+  content: "";
+  display: none;
+  width: 4px;
+  height: 8px;
+  border: 1.5px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+  margin-top: -1px;
+}
+.input:checked ~ .checkmark::after {
+  display: block;
+}
+.indeterminate .checkmark {
+  background: var(--purple-500);
+  border-color: var(--purple-500);
+}
+.indeterminate .checkmark::after {
+  display: block;
+  width: 8px;
+  height: 0;
+  border: none;
+  border-bottom: 1.5px solid white;
+  transform: none;
+  margin-top: 0;
+}
+.label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--text-default);
+}
+.disabled .label {
+  color: var(--text-disabled);
+}
+
+/* src/app/components/ui/Chip.module.css */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  border-radius: 99px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-elevated);
+  color: var(--text-default);
+  white-space: nowrap;
+  user-select: none;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.dismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 0 4px;
+  font-size: 14px;
+  line-height: 1;
+  color: inherit;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+}
+.dismiss:hover {
+  opacity: 1;
+}
+.purple {
+  background: var(--purple-50);
+  border-color: var(--purple-200);
+  color: var(--purple-600);
+}
+.green {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #15803d;
+}
+.red {
+  background: #fff1f2;
+  border-color: #fecdd3;
+  color: var(--red-600);
+}
+
+/* src/app/components/ui/Stepper.module.css */
+.stepper {
+  display: flex;
+  font-family: var(--font-body);
+  width: 100%;
+}
+.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+.vertical {
+  flex-direction: column;
+  gap: 4px;
+}
+.step {
+  display: flex;
+  position: relative;
+  flex: 1;
+}
+.horizontal .step {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.vertical .step {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 64px;
+}
+.indicatorWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.sm .indicator {
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+}
+.md .indicator {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+.lg .indicator {
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+}
+.active .indicator {
+  background: var(--purple-500);
+  border-color: var(--purple-500);
+  color: white;
+}
+.completed .indicator {
+  background: var(--purple-500);
+  border-color: var(--purple-500);
+  color: white;
+}
+.error .indicator {
+  background: var(--red-500);
+  border-color: var(--red-500);
+  color: white;
+}
+.disabled .indicator {
+  background: var(--surface-subtle);
+  border-color: var(--border-subtle);
+  color: var(--text-disabled);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+.vertical .content {
+  margin-top: 0;
+  padding-bottom: 24px;
+}
+.header {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-default);
+  line-height: 1.2;
+}
+.subheader {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+.active .header {
+  color: var(--purple-500);
+}
+.error .header {
+  color: var(--red-500);
+}
+.disabled .header {
+  color: var(--text-disabled);
+}
+.disabled .subheader {
+  color: var(--text-disabled);
+}
+.optional {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  display: block;
+}
+.connector {
+  position: absolute;
+  background: var(--border-default);
+  transition: background 0.2s ease;
+}
+.horizontal .connector {
+  top: 16px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  z-index: 0;
+}
+.sm.horizontal .connector {
+  top: 12px;
+}
+.md.horizontal .connector {
+  top: 16px;
+}
+.lg.horizontal .connector {
+  top: 20px;
+}
+.vertical .connector {
+  left: 16px;
+  top: 16px;
+  width: 2px;
+  height: 100%;
+  z-index: 0;
+}
+.sm.vertical .connector {
+  left: 12px;
+  top: 12px;
+}
+.md.vertical .connector {
+  left: 16px;
+  top: 16px;
+}
+.lg.vertical .connector {
+  left: 20px;
+  top: 20px;
+}
+.completed .connector {
+  background: var(--purple-500);
+}
+.horizontal.dotVariant .connector {
+  top: 4px;
+}
+.vertical.dotVariant .connector {
+  left: 4px;
+  top: 4px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--border-default);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+.active .dot {
+  background: var(--purple-500);
+}
+.completed .dot {
+  background: var(--purple-500);
+}
+.error .dot {
+  background: var(--red-500);
+}
+.icon {
+  width: 60%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* src/app/components/ui/Switch.module.css */
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.track {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.track input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--border-default);
+  transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 22px;
+}
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(58, 55, 65, 0.2);
+}
+input:checked + .slider {
+  background: var(--purple-500);
+}
+input:focus-visible + .slider {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--purple-200);
+}
+input:checked + .slider::before {
+  transform: translateX(18px);
+}
+.label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--text-default);
+}
+.disabled .label {
+  color: var(--text-disabled);
+}
+
+/* src/app/components/ui/Toggle.module.css */
+.container {
+  display: inline-flex;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-default);
+  padding: 4px;
+  border-radius: var(--radius-m);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+.option {
+  position: relative;
+  padding: 5px 16px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 1;
+  border: none;
+  background: none;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 20px;
+}
+.option:disabled {
+  cursor: not-allowed;
+}
+.activeOption {
+  color: white;
+}
+.slider {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  background: var(--purple-500);
+  border-radius: calc(var(--radius-m) - 4px);
+  transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1), transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+/*# sourceMappingURL=index.css.map */
