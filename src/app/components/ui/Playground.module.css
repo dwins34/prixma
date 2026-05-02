@@ -1,0 +1,165 @@
+.playground {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  background: var(--surface-default);
+  margin-bottom: 40px;
+}
+
+.mainArea {
+  display: flex;
+  min-height: 240px;
+  background: white;
+  background-image: radial-gradient(var(--border-subtle) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.preview {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-width: 0;
+}
+
+/* ── Controls Sidebar ─────────────────────────── */
+.controls {
+  width: 280px;
+  border-left: 1px solid var(--border-default);
+  background: var(--surface-elevated);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.controlLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.controlGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.optionBtn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-family: var(--font-body);
+  border: 1px solid var(--border-default);
+  background: white;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.optionBtn:hover {
+  border-color: var(--purple-300);
+}
+
+.activeOption {
+  background: var(--purple-500);
+  border-color: var(--purple-500);
+  color: white;
+}
+
+/* ── Checkbox / Switch ──────────────────────── */
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-default);
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  width: 32px;
+  height: 18px;
+  background: var(--border-default);
+  border-radius: 20px;
+  position: relative;
+  transition: 0.2s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 2px;
+  bottom: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+input:checked + .slider {
+  background: var(--purple-500);
+}
+
+input:checked + .slider::before {
+  transform: translateX(14px);
+}
+
+/* ── Code Area ──────────────────────────────── */
+.codeArea {
+  border-top: 1px solid var(--border-default);
+}
+
+.tabs {
+  display: flex;
+  background: var(--surface-elevated);
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.tab {
+  padding: 10px 16px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  color: var(--text-default);
+}
+
+.activeTab {
+  color: var(--purple-500);
+  border-bottom-color: var(--purple-500);
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 768px) {
+  .mainArea {
+    flex-direction: column;
+  }
+  .controls {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--border-default);
+  }
+}

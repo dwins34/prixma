@@ -1,0 +1,187 @@
+.stepper {
+  display: flex;
+  font-family: var(--font-body);
+  width: 100%;
+}
+
+.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.vertical {
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── Step Container ────────────────────────────── */
+.step {
+  display: flex;
+  position: relative;
+  flex: 1;
+}
+
+.horizontal .step {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.vertical .step {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 64px;
+}
+
+/* ── Indicator (Circle/Dot) ─────────────────────── */
+.indicatorWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.sm .indicator { width: 24px; height: 24px; font-size: 11px; }
+.md .indicator { width: 32px; height: 32px; font-size: 13px; }
+.lg .indicator { width: 40px; height: 40px; font-size: 15px; }
+
+/* States */
+.active .indicator {
+  background: var(--purple-500);
+  border-color: var(--purple-500);
+  color: white;
+}
+
+.completed .indicator {
+  background: var(--purple-500);
+  border-color: var(--purple-500);
+  color: white;
+}
+
+.error .indicator {
+  background: var(--red-500);
+  border-color: var(--red-500);
+  color: white;
+}
+
+.disabled .indicator {
+  background: var(--surface-subtle);
+  border-color: var(--border-subtle);
+  color: var(--text-disabled);
+}
+
+/* ── Content (Labels) ───────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px; /* For horizontal */
+}
+
+.vertical .content {
+  margin-top: 0;
+  padding-bottom: 24px;
+}
+
+.header {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-default);
+  line-height: 1.2;
+}
+
+.subheader {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.active .header { color: var(--purple-500); }
+.error .header { color: var(--red-500); }
+.disabled .header { color: var(--text-disabled); }
+.disabled .subheader { color: var(--text-disabled); }
+
+/* Optional tag */
+.optional {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  display: block;
+}
+
+/* ── Connector Line ─────────────────────────────── */
+.connector {
+  position: absolute;
+  background: var(--border-default);
+  transition: background 0.2s ease;
+}
+
+.horizontal .connector {
+  top: 16px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  z-index: 0;
+}
+
+.sm.horizontal .connector { top: 12px; }
+.md.horizontal .connector { top: 16px; }
+.lg.horizontal .connector { top: 20px; }
+
+.vertical .connector {
+  left: 16px;
+  top: 16px;
+  width: 2px;
+  height: 100%;
+  z-index: 0;
+}
+
+.sm.vertical .connector { left: 12px; top: 12px; }
+.md.vertical .connector { left: 16px; top: 16px; }
+.lg.vertical .connector { left: 20px; top: 20px; }
+
+.completed .connector { background: var(--purple-500); }
+
+/* ── Dot Variant Connector Overrides ─────────── */
+.horizontal.dotVariant .connector { top: 4px; }
+.vertical.dotVariant .connector { left: 4px; top: 4px; }
+
+/* ── Dot Variant indicator ─────────────────────── */
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--border-default);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.active .dot { background: var(--purple-500); }
+.completed .dot { background: var(--purple-500); }
+.error .dot { background: var(--red-500); }
+
+/* ── Icon styles ───────────────────────────────── */
+.icon {
+  width: 60%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

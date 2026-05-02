@@ -1,208 +1,566 @@
-/* ── Layout ──────────────────────────────────────── */
-.layout {
-  display: flex;
-  padding-top: var(--header-height);
+/* ═══════════════════════════════════════════════
+   ROOT
+   ═══════════════════════════════════════════════ */
+.root {
+  position: relative;
+  background: #fafbff;
   min-height: 100vh;
-}
-.main {
-  margin-left: var(--sidebar-width);
-  margin-right: var(--toc-width);
-  flex: 1;
-  max-width: 900px;
-  padding: 48px 56px 96px;
+  padding-top: 72px;
+  /* No overflow:hidden — blobs must bleed outside at edges */
+  overflow-x: clip;
 }
 
-/* ── TOC ─────────────────────────────────────────── */
-.toc {
-  position: fixed; right: 0;
-  top: var(--header-height); bottom: 0;
-  width: var(--toc-width);
-  padding: 32px 20px;
-  overflow-y: auto;
-  border-left: 1px solid var(--border-default);
-  background: var(--surface-default);
+/* ═══════════════════════════════════════════════
+   BLOBS — pure CSS radial gradients
+   Matching exact Figma ellipse nodes (6:652, 8:668)
+   Screenshot confirmed: very soft, light lavender/blue-tinted circles
+   ═══════════════════════════════════════════════ */
+
+/* Blob 1 wrapper: left:-239.92px top:25.28px size:918.689px */
+.blobWrap1 {
+  position: absolute;
+  left: -239.92px;
+  top: 25.28px;
+  width: 918.689px;
+  height: 918.689px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
 }
-.tocTitle {
-  font-size: 11px; font-weight: 600; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--text-secondary);
-  margin-bottom: 12px;
+/* rotate(64.31deg) */
+.blobRotate1 {
+  transform: rotate(64.31deg);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.tocLink {
-  display: block; padding: 4px 0 4px 12px;
-  font-size: 12.5px; color: var(--text-secondary);
+/* inner ellipse: 688.324px — soft lavender gradient matching Figma screenshot */
+.blob1 {
+  width: 688.324px;
+  height: 688.324px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(196, 181, 255, 0.55) 0%,
+    rgba(210, 198, 255, 0.30) 35%,
+    rgba(220, 210, 255, 0.12) 60%,
+    transparent 75%
+  );
+  flex-shrink: 0;
+}
+
+/* Blob 2 wrapper: right:-23.88px top:-55.58px size:625.119px */
+.blobWrap2 {
+  position: absolute;
+  right: -23.88px;
+  top: -55.58px;
+  width: 625.119px;
+  height: 625.119px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+/* rotate(115.69deg) scaleY(-1) */
+.blobRotate2 {
+  transform: rotate(115.69deg) scaleY(-1);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* inner ellipse: 468.368px — soft blue-lavender matching Figma screenshot */
+.blob2 {
+  width: 468.368px;
+  height: 468.368px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(185, 200, 255, 0.55) 0%,
+    rgba(195, 210, 255, 0.28) 35%,
+    rgba(210, 220, 255, 0.10) 60%,
+    transparent 75%
+  );
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════
+   MAIN CONTENT — flex-col gap:120px centered
+   ═══════════════════════════════════════════════ */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════════
+   HERO — w:820px flex-col gap:80px
+   ═══════════════════════════════════════════════ */
+.heroGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  width: 820px;
+  max-width: calc(100% - 48px);
+}
+.heroTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+.heroTextGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.badgeTitleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Badge — bg:#fbfaff border:0.5px solid #6037d3 rounded:20px */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: #fbfaff;
+  border: 0.5px solid #6037d3;
+  border-radius: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: #3a3741;
+  white-space: nowrap;
+}
+
+/* Hero title — Raleway SemiBold 80px black centered */
+.heroTitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 80px;
+  font-weight: 600;
+  line-height: normal;
+  color: #000000;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+/* "precision" gradient — #6037d3 44.231% → #3c66f3 62.981% */
+.accent {
+  background: linear-gradient(90deg, #6037d3 44.231%, #3c66f3 62.981%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtitle — Inter Regular 20px #65626f w:560px */
+.heroSub {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #65626f;
+  text-align: center;
+  width: 560px;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* CTA row — gap:20px (shared between hero and banner) */
+.ctaRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Primary button — #6037d3 h:40px px:16 rounded:12px with exact Figma shadows */
+.btnPrimary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #f8f7fa;
   text-decoration: none;
-  border-left: 1px solid var(--border-default);
-  transition: all .15s; margin-bottom: 2px;
+  white-space: nowrap;
+  background: #6037d3;
+  box-shadow:
+    0px 2px 6px rgba(58,55,65,0.12),
+    0px 8px 16px rgba(58,55,65,0.08),
+    inset 1px 1px 1px rgba(255,255,255,0.4),
+    inset -1px -1px 2px rgba(58,55,65,0.2);
+  transition: background 0.15s;
 }
-.tocLink:hover { color: var(--purple-500); border-left-color: var(--purple-300); }
-.tocSub { padding-left: 24px; }
+.btnPrimary:hover { background: #4f2eb8; }
 
-/* ── Page header ─────────────────────────────────── */
-.pageTitle {
-  font-family: var(--font-display);
-  font-size: 40px; font-weight: 700; line-height: 1.15;
-  margin-bottom: 12px;
-  background: linear-gradient(135deg, var(--text-default) 40%, var(--purple-500));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+/* Secondary button — white bg, border #f5f4f7 h:40px rounded:12px */
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3a3741;
+  text-decoration: none;
+  white-space: nowrap;
+  background: white;
+  border: 1px solid #f5f4f7;
+  box-shadow:
+    0px 1px 2px rgba(58,55,65,0.12),
+    0px 4px 6px rgba(58,55,65,0.08);
+  transition: border-color 0.15s, color 0.15s;
 }
-.pageSubtitle {
-  font-size: 17px; color: var(--text-secondary);
-  line-height: 1.6; margin-bottom: 32px; max-width: 600px;
-}
-.badgeRow { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
-.chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 500;
-  padding: 4px 10px; border-radius: 99px;
-  border: 1px solid var(--border-default); color: var(--text-secondary);
-}
-.chipPurple { background: var(--purple-50); border-color: var(--purple-200); color: var(--purple-600); }
-.chipGreen  { background: #f0fdf4; border-color: #bbf7d0; color: #16a34a; }
+.btnSecondary:hover { border-color: #d4c6ff; color: #6037d3; }
 
-/* ── Section ─────────────────────────────────────── */
-.section { margin-bottom: 56px; scroll-margin-top: 80px; }
-.sectionTitle {
-  font-family: var(--font-display);
-  font-size: 22px; font-weight: 600;
-  margin-bottom: 6px;
+/* ═══════════════════════════════════════════════
+   STAT CARDS — flex gap:28px w:756px
+   border:#d4c6ff rounded:12px p:20px
+   ═══════════════════════════════════════════════ */
+.stats {
+  display: flex;
+  align-items: stretch;
+  gap: 28px;
+  width: 756px;
+  max-width: 100%;
 }
-.groupLabel {
+.statCard {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid #d4c6ff;
+  border-radius: 12px;
+  text-align: center;
+}
+.statNum {
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: normal;
+  color: #000000;
+}
+.statLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #65626f;
+}
+
+/* ═══════════════════════════════════════════════
+   TAB STRIP — full width border #d4c6ff
+   Raleway Medium 14px tracking:0.56px uppercase
+   ═══════════════════════════════════════════════ */
+.tabStrip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid #d4c6ff;
+  border-bottom: 1px solid #d4c6ff;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabStrip::-webkit-scrollbar { display: none; }
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 48px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+  color: #65626f;
+  white-space: nowrap;
+  border-right: 1px solid #d4c6ff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+.tabFirst { border-left: 1px solid #d4c6ff; }
+.tab:hover { color: #6037d3; background: rgba(235, 228, 255, 0.3); }
+
+/* ═══════════════════════════════════════════════
+   FEATURES SECTION — w:1101px flex-col gap:60px
+   ═══════════════════════════════════════════════ */
+.featuresSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 60px;
+  width: 1101px;
+  max-width: calc(100% - 80px);
+}
+.featHeadGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  text-align: center;
+}
+/* "Designed for serious products" — Raleway SemiBold 60px */
+.featTitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: normal;
+  color: #000000;
+  margin: 0;
+  width: 100%;
+}
+/* subtitle — Inter Regular 20px #65626f w:560px */
+.featSub {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #65626f;
+  width: 560px;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Single white card — border rgba(192,207,255,0.4) rounded:20px */
+.featCard {
+  background: white;
+  border: 1px solid rgba(192, 207, 255, 0.4);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+}
+.featRow {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+.featRowBorderT { border-top: 1px solid rgba(192, 207, 255, 0.4); }
+
+/* Cell — flex:1 p:40px flex-col gap:32px */
+.featCell {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px;
+}
+.featCellBorderL { border-left: 1px solid rgba(192, 207, 255, 0.4); }
+
+/* ── Icon rendering (exact Figma structure) ──
+   Outer: bg:#ecf0ff rounded:14px p:4px
+   Inner bordered: bg:white border:#c0cfff rounded:12px 48px
+   Inner bare: 48px image directly (has white bg as part of image)
+   Small icon: 24px centered inside 48px, with -4.17% bleed
+*/
+.iconOuter {
+  display: inline-flex;
+  padding: 4px;
+  background: #ecf0ff;
+  border-radius: 14px;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+/* White bordered 48px container */
+.iconInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: white;
+  border: 1px solid #c0cfff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+/* 24px wrapper centered inside iconInner */
+.iconSmallWrap {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+/* -4.17% bleed on each side (Figma: inset-[-4.17%] on 24px container) */
+.iconSmallInset {
+  position: absolute;
+  top: -4.17%;
+  left: -4.17%;
+  right: -4.17%;
+  bottom: -4.17%;
+}
+/* Bare 48px container — for images that include white bg styling */
+.iconBare {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+/* Image fills its container completely */
+.iconImgFull {
+  position: absolute;
   display: block;
-  font-size: 11px; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--purple-400);
-  margin-bottom: 8px; margin-top: 64px;
-}
-.subTitle {
-  font-family: var(--font-display);
-  font-size: 17px; font-weight: 600;
-  margin-bottom: 8px; margin-top: 32px;
-  scroll-margin-top: 80px;
-}
-.sectionDesc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.65; }
-.divider { height: 1px; background: var(--border-default); margin: 48px 0; }
-
-/* ── Props table ─────────────────────────────────── */
-.tableWrap { border: 1px solid var(--border-default); border-radius: var(--radius-m); overflow: hidden; }
-.table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-.table th {
-  text-align: left; padding: 10px 14px;
-  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-  color: var(--text-secondary); background: var(--surface-elevated);
-  border-bottom: 1px solid var(--border-default);
-}
-.table td { padding: 12px 14px; vertical-align: top; border-bottom: 1px solid var(--border-subtle); }
-.table tr:last-child td { border-bottom: none; }
-.table tr:hover td { background: var(--surface-elevated); }
-.propName  { font-family: var(--font-mono); font-size: 12.5px; color: var(--purple-600); font-weight: 500; }
-.propType  { font-family: var(--font-mono); font-size: 12px; color: #0369a1; }
-.propDefault { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
-.propDesc  { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
-
-/* ── Input ───────────────────────────────────────── */
-.inputGroup { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 220px; }
-.inputLabel { font-size: 13px; font-weight: 500; color: var(--text-default); }
-.inputWrap { position: relative; }
-.input {
-  width: 100%; height: 40px; padding: 0 12px;
-  border: 1px solid var(--border-default); border-radius: var(--radius-m);
-  font-family: var(--font-body); font-size: 14px;
-  color: var(--text-default); background: white; outline: none;
-  transition: all .15s;
-  box-shadow: 0 1px 4px var(--shadow-top);
-}
-.input::placeholder { color: var(--text-disabled); }
-.input:hover { border-color: var(--purple-300); }
-.input:focus { border-color: var(--purple-500); box-shadow: 0 0 0 3px rgba(96,55,211,0.15); }
-.inputPadLeft { padding-left: 36px; }
-.inputError { border-color: var(--red-500) !important; }
-.inputSuccess { border-color: #16a34a !important; }
-.inputIcon {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 16px; height: 16px; color: var(--text-secondary); pointer-events: none;
-}
-.iconLeft { left: 12px; }
-.inputHint { font-size: 12px; color: var(--text-secondary); }
-.inputErrorMsg { font-size: 12px; color: var(--red-500); }
-.inputSuccessMsg { font-size: 12px; color: #16a34a; }
-
-/* ── Chip component ──────────────────────────────── */
-.chipComp {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 12px; border-radius: 99px;
-  font-size: 13px; font-weight: 500; border: 1px solid;
-  transition: all .15s;
-}
-.chipDefault { background: var(--surface-elevated); border-color: var(--border-default); color: var(--text-default); }
-.chipPurpleComp { background: var(--purple-50); border-color: var(--purple-200); color: var(--purple-600); }
-.chipGreenComp  { background: #f0fdf4; border-color: #bbf7d0; color: #16a34a; }
-.chipRedComp    { background: #fff1f2; border-color: #fecdd3; color: var(--red-600); }
-
-/* ── Progress ───────────────────────────────────── */
-.progressTrack {
-  width: 100%; background: var(--surface-elevated);
-  border-radius: 99px; overflow: hidden;
-  border: 1px solid var(--border-default);
-}
-@keyframes shimmer {
-  from { transform: translateX(-100%); }
-  to   { transform: translateX(100%); }
-}
-.progressFill {
-  height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg, var(--purple-600), var(--purple-400));
-  transition: width .6s cubic-bezier(.4,0,.2,1);
-  position: relative; overflow: hidden;
-}
-.progressFill::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
-  animation: shimmer 2s infinite;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
 }
 
-/* ── Stepper ─────────────────────────────────────── */
-.stepper { display: flex; align-items: center; gap: 0; }
-.stepItem { display: flex; flex-direction: column; align-items: center; }
-.stepCircle {
-  width: 32px; height: 32px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 600; font-family: var(--font-display);
-  border: 2px solid; transition: all .2s;
+/* Feature text */
+.featText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
-.done   { background: var(--purple-500) !important; border-color: var(--purple-500) !important; color: white !important; }
-.active { background: white !important; border-color: var(--purple-500) !important; color: var(--purple-500) !important; }
-.todo   { background: white !important; border-color: var(--border-default) !important; color: var(--text-secondary) !important; }
-.stepLabel { font-size: 12px; font-weight: 500; margin-top: 4px; }
-.stepActive { color: var(--purple-500); }
-.stepTodo   { color: var(--text-secondary); }
-.connector { height: 2px; width: 48px; background: var(--border-default); margin: 0 4px 16px; transition: background .2s; }
-.connectorDone { background: var(--purple-500); }
-
-/* ── Uploader ────────────────────────────────────── */
-.uploader {
-  width: 100%; padding: 32px;
-  border: 2px dashed var(--border-default);
-  border-radius: var(--radius-l);
-  text-align: center; cursor: pointer;
-  transition: all .2s; background: white;
+/* title — Inter Medium 24px */
+.featCardTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  /* Figma uses line-height:0 trick for mixed color spans — replicate by using normal line-height */
 }
-.uploader:hover, .dragOver {
-  border-color: var(--purple-400) !important;
-  background: var(--purple-50) !important;
+.featBold  { color: #000000; }
+.featMuted { color: #65626f; }
+/* desc — Inter Regular 14px #65626f */
+.featDesc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #65626f;
+  margin: 0;
 }
 
-/* ── Footer ─────────────────────────────────────── */
-.footer {
-  margin-top: 64px; padding-top: 32px;
-  border-top: 1px solid var(--border-default);
-  text-align: center; color: var(--text-secondary); font-size: 13px;
+/* ═══════════════════════════════════════════════
+   CTA BANNER — w:900px rounded:40px gradient py:60px
+   gradient: 128.272deg rgba(96,55,211,0.12) 37.36% → rgba(60,102,243,0.12) 97.4% + white
+   ═══════════════════════════════════════════════ */
+.ctaBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 900px;
+  max-width: calc(100% - 80px);
+  padding: 60px 40px;
+  border-radius: 40px;
+  background:
+    linear-gradient(128.272deg, rgba(96,55,211,0.12) 37.359%, rgba(60,102,243,0.12) 97.4%),
+    white;
+}
+.ctaBannerTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+/* CTA badge — same as hero badge */
+.ctaBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: #fbfaff;
+  border: 0.5px solid #6037d3;
+  border-radius: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: #3a3741;
+  white-space: nowrap;
+}
+/* "Ready to build?" — Raleway SemiBold 60px */
+.ctaTitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: normal;
+  color: #000000;
+  text-align: center;
+  margin: 0;
+}
+/* CTA subtitle */
+.ctaSub {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #65626f;
+  text-align: center;
+  width: 560px;
+  max-width: 100%;
+  margin: 0;
 }
 
-/* ── Responsive ──────────────────────────────────── */
-@media (max-width: 1200px) {
-  .toc { display: none; }
-  .main { margin-right: 0; }
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1160px) {
+  .featuresSection { max-width: calc(100% - 80px); }
 }
-@media (max-width: 768px) {
-  .main { margin-left: 0; padding: 32px 20px 64px; }
+@media (max-width: 900px) {
+  .heroTitle { font-size: 52px; }
+  .featTitle { font-size: 40px; }
+  .ctaTitle  { font-size: 40px; }
+  .heroGroup { width: 100%; }
+  .featRow   { flex-direction: column; }
+  .featCellBorderL { border-left: none; border-top: 1px solid rgba(192,207,255,0.4); }
+  .ctaBanner { width: 100%; max-width: calc(100% - 48px); }
+}
+@media (max-width: 600px) {
+  .heroTitle { font-size: 36px; }
+  .heroSub   { font-size: 16px; }
+  .ctaTitle  { font-size: 32px; }
+  .ctaSub    { font-size: 16px; }
+  .ctaRow    { flex-direction: column; align-items: stretch; }
+  .stats     { flex-direction: column; }
+  .content   { gap: 60px; padding: 60px 0; }
 }

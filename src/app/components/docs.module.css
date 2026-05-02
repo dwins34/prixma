@@ -1,0 +1,147 @@
+/* ── Layout ──────────────────────────────────────── */
+.layout {
+  display: flex;
+  padding-top: var(--header-height);
+  min-height: 100vh;
+}
+.main {
+  margin-left: var(--sidebar-width);
+  margin-right: var(--toc-width);
+  flex: 1;
+  padding: 48px 56px 96px;
+}
+
+/* ── TOC sidebar ─────────────────────────────────── */
+.toc {
+  position: fixed; right: 0;
+  top: var(--header-height); bottom: 0;
+  width: var(--toc-width);
+  padding: 32px 20px;
+  overflow-y: auto;
+  border-left: 1px solid var(--border-default);
+  background: var(--surface-default);
+}
+
+/* ── Section page header ─────────────────────────── */
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: 40px; font-weight: 700; line-height: 1.15;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--text-default) 40%, var(--purple-500));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.pageSubtitle {
+  font-size: 17px; color: var(--text-secondary);
+  line-height: 1.6; margin-bottom: 32px; max-width: 600px;
+}
+.badgeRow { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500;
+  padding: 4px 10px; border-radius: 99px;
+  border: 1px solid var(--border-default); color: var(--text-secondary);
+}
+.chipPurple { background: var(--purple-50); border-color: var(--purple-200); color: var(--purple-600); }
+.chipGreen  { background: #f0fdf4; border-color: #bbf7d0; color: #16a34a; }
+
+/* ── Section ─────────────────────────────────────── */
+.section { margin-bottom: 56px; scroll-margin-top: 80px; }
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 700;
+  margin-bottom: 6px;
+}
+.subTitle {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 600;
+  margin-bottom: 8px; margin-top: 32px;
+  scroll-margin-top: 80px;
+}
+.sectionDesc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.65; }
+.divider { height: 1px; background: var(--border-default); margin: 48px 0; }
+
+/* ── Props table ─────────────────────────────────── */
+.tableWrap { border: 1px solid var(--border-default); border-radius: var(--radius-m); overflow: hidden; }
+.table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.table th {
+  text-align: left; padding: 10px 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text-secondary); background: var(--surface-elevated);
+  border-bottom: 1px solid var(--border-default);
+}
+.table td { padding: 12px 14px; vertical-align: top; border-bottom: 1px solid var(--border-subtle); }
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: var(--surface-elevated); }
+.propName    { font-family: var(--font-mono); font-size: 12.5px; color: var(--purple-600); font-weight: 500; }
+.propType    { font-family: var(--font-mono); font-size: 12px; color: #0369a1; }
+.propDefault { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
+.propDesc    { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ── Progress bars ───────────────────────────────── */
+.progressTrack {
+  width: 100%; background: var(--surface-elevated);
+  border-radius: 99px; overflow: hidden;
+  border: 1px solid var(--border-default);
+}
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+.progressFill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--purple-600), var(--purple-400));
+  transition: width .6s cubic-bezier(.4,0,.2,1);
+  position: relative; overflow: hidden;
+}
+.progressFill::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  animation: shimmer 2s infinite;
+}
+
+/* ── Uploader ────────────────────────────────────── */
+.uploader {
+  width: 100%; padding: 32px;
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-l);
+  text-align: center; cursor: pointer;
+  transition: all .2s; background: white;
+}
+.uploader:hover, .dragOver {
+  border-color: var(--purple-400) !important;
+  background: var(--purple-50) !important;
+}
+
+/* ── TOC styles (used inside each page via PageToc component) ── */
+.tocTitle {
+  font-size: 11px; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.tocLink {
+  display: block; padding: 4px 0 4px 12px;
+  font-size: 12.5px; color: var(--text-secondary);
+  text-decoration: none;
+  border-left: 1px solid var(--border-default);
+  transition: all .15s; margin-bottom: 2px;
+}
+.tocLink:hover { color: var(--purple-500); border-left-color: var(--purple-300); }
+.tocLinkActive { color: var(--purple-500); border-left-color: var(--purple-500); font-weight: 500; }
+.tocSub { padding-left: 24px; }
+
+/* ── Footer ─────────────────────────────────────── */
+.footer {
+  margin-top: 64px; padding-top: 32px;
+  border-top: 1px solid var(--border-default);
+  text-align: center; color: var(--text-secondary); font-size: 13px;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 1200px) {
+  .toc { display: none; }
+  .main { margin-right: 0; }
+}
+@media (max-width: 768px) {
+  .main { margin-left: 0; padding: 32px 20px 64px; }
+}

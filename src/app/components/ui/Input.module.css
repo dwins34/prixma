@@ -1,0 +1,370 @@
+/* ── Wrapper ────────────────────────────────── */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+/* ── Top-label ──────────────────────────────── */
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #3a3741;
+}
+
+.optional {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: #65626f;
+}
+
+.required {
+  color: #b60012;
+}
+
+/* ── Field container (shared) ─────────────── */
+.fieldWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  background: white;
+  border: 1px solid #dad9df;
+  border-radius: 8px;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+/* Sizes */
+.sm .fieldWrap { height: 32px; padding: 0 12px; }
+.md .fieldWrap { height: 40px; padding: 0 12px; }
+.lg .fieldWrap { height: 48px; padding: 0 16px; }
+
+/* States */
+.fieldWrap:hover { border-color: #c1bfc8; }
+
+.fieldWrap:focus-within {
+  border-color: #4a26b1;
+  box-shadow: 0px 0px 0px 2px #f2edff;
+}
+
+.error .fieldWrap {
+  border-color: #b60012;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+
+.error .fieldWrap:focus-within {
+  border-color: #b60012;
+  box-shadow: 0px 0px 0px 2px #ffecec;
+}
+
+.success .fieldWrap {
+  border-color: #16a34a;
+}
+
+.success .fieldWrap:focus-within {
+  border-color: #16a34a;
+  box-shadow: 0px 0px 0px 2px #dcfce7;
+}
+
+.disabled .fieldWrap,
+.disabled .fieldWrap:hover,
+.disabled .fieldWrap:focus-within {
+  background: #f8f7fa;
+  border-color: #dad9df;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  cursor: not-allowed;
+}
+
+/* ── Native input (Top Label variant) ────── */
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3a3741;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.input::placeholder {
+  color: #c1bfc8;
+}
+
+.input:disabled {
+  color: #c1bfc8;
+  cursor: not-allowed;
+}
+
+/* ── Icons ────────────────────────────────── */
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #65626f;
+  pointer-events: none;
+}
+
+/* ── Helper / error text ──────────────────── */
+.helperText {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #65626f;
+}
+
+.errorText {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #b60012;
+}
+
+/* ══════════════════════════════════════════
+   FLOATING LABEL VARIANT
+   Label starts centered inside the field.
+   On focus/fill it floats OUT to sit ON
+   the top border line (white bg cuts border).
+   Matches Figma node 353-1551 exactly.
+   ══════════════════════════════════════════ */
+.floatingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+/* The field itself — overflow: visible so label can escape the border */
+.floatingField {
+  position: relative;
+  background: white;
+  border: 1px solid #dad9df;
+  border-radius: 8px;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 6px;
+  transition: border-color 0.15s;
+  overflow: visible; /* REQUIRED: label must escape to sit on border */
+}
+
+.floatingField:hover { border-color: #c1bfc8; }
+
+.floatingField:focus-within {
+  border-color: #4a26b1;
+  box-shadow: 0px 0px 0px 2px #f2edff;
+}
+
+.floatingError .floatingField {
+  border-color: #b60012;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+
+.floatingError .floatingField:focus-within {
+  border-color: #b60012;
+  box-shadow: 0px 0px 0px 2px #ffecec;
+}
+
+.floatingDisabled .floatingField,
+.floatingDisabled .floatingField:hover,
+.floatingDisabled .floatingField:focus-within {
+  background: #f8f7fa;
+  border-color: #dad9df;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+
+/* Inner wrapper — position reference for the floating label */
+.floatingInner {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/*
+  Label — always absolute, animates between two positions:
+
+  NOT floated (inline): centered in the 48px field
+    → top: 50%, transform: translateY(-50%), left: 0
+    → font-size: 12px, color: #65626f (placeholder), no bg
+
+  FLOATED (on border): sits ON the top border line
+    → top: 0, transform: translateY(-50%), left: -4px
+    → font-size: 12px, color: #3a3741, bg: white, padding: 0 4px
+    → The white background "cuts through" the border visually
+*/
+.floatingLabel {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #65626f;
+  background: transparent;
+  padding: 0;
+  border-radius: 2px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1;
+  transition:
+    top 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.18s,
+    background 0.18s,
+    padding 0.18s,
+    left 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Floated: label escapes to sit on the top border */
+.floatingLabel.floated {
+  /* -1px = half the 2px border → center of label aligns with border midline */
+  top: -1px;
+  transform: translateY(-50%);
+  left: -4px;
+  color: #3a3741;
+  background: white;
+  padding: 0 4px;
+}
+
+/* Focus colour override */
+.floatingLabel.floatedFocus {
+  color: #4a26b1;
+}
+
+/* The actual <input> element */
+.floatingInput {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3a3741;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+/* When inline (not floated): hide typed text so label acts as placeholder */
+.floatingInput.notFloated {
+  color: transparent;
+  caret-color: #3a3741; /* keep caret visible when focused */
+}
+
+.floatingInput::placeholder { color: transparent; }
+
+.floatingInput:disabled {
+  color: #c1bfc8;
+  cursor: not-allowed;
+}
+
+/* ══════════════════════════════════════════
+   INLINE LABEL VARIANT
+   Label (small, secondary) + value stacked
+   inside the field box together
+   ══════════════════════════════════════════ */
+.inlineGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.inlineField {
+  background: white;
+  border: 1px solid #dad9df;
+  border-radius: 8px;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 6px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.inlineField:hover { border-color: #c1bfc8; }
+
+.inlineField:focus-within {
+  border-color: #4a26b1;
+  box-shadow: 0px 0px 0px 2px #f2edff;
+}
+
+.inlineError .inlineField {
+  border-color: #b60012;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+
+.inlineError .inlineField:focus-within {
+  border-color: #b60012;
+  box-shadow: 0px 0px 0px 2px #ffecec;
+}
+
+.inlineDisabled .inlineField,
+.inlineDisabled .inlineField:hover,
+.inlineDisabled .inlineField:focus-within {
+  background: #f8f7fa;
+  border-color: #dad9df;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+
+.inlineContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.inlineLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #65626f;
+  white-space: nowrap;
+}
+
+.inlineInput {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3a3741;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.inlineInput::placeholder { color: #c1bfc8; }
+.inlineInput:disabled { color: #c1bfc8; cursor: not-allowed; }
