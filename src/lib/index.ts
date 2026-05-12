@@ -5,3 +5,4 @@ export { Chip }                from '../app/components/ui/Chip';
 export { Stepper }             from '../app/components/ui/Stepper';
 export { default as Switch }   from '../app/components/ui/Switch';
 export { default as Toggle }   from '../app/components/ui/Toggle';
+export { Select }              from '../app/components/ui/Select';

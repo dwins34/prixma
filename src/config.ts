@@ -40,6 +40,7 @@ export const COMPONENTS = [
   { slug: 'uploader', label: 'Uploader' },
   { slug: 'progress', label: 'Progress Bar' },
   { slug: 'switch',   label: 'Switch' },
+  { slug: 'select',   label: 'Select' },
   { slug: 'toggle',   label: 'Toggle' },
   { slug: 'checkbox', label: 'Checkbox' },
 ] as const;

@@ -252,7 +252,7 @@ npm install react react-dom
 - [x] Toggle
 - [x] Chip
 - [x] Stepper
-- [ ] Select / Dropdown
+- [x] Select / Dropdown
 - [ ] Modal / Dialog
 - [ ] Toast / Notification
 - [ ] Table

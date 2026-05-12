@@ -1,0 +1,424 @@
+/* ── Wrapper ─────────────────────────────────── */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+/* ── Label row ───────────────────────────────── */
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #3a3741;
+}
+
+.optional {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: #65626f;
+}
+
+.required {
+  color: #b60012;
+}
+
+/* ── Trigger button ──────────────────────────── */
+.trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: white;
+  border: 1px solid #dad9df;
+  border-radius: 8px;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-align: left;
+  outline: none;
+  font-family: var(--font-body);
+}
+
+/* Sizes */
+.sm .trigger { height: 32px; padding: 0 10px; font-size: 13px; }
+.md .trigger { height: 40px; padding: 0 12px; font-size: 14px; }
+.lg .trigger { height: 48px; padding: 0 16px; font-size: 14px; }
+
+.trigger:hover { border-color: #c1bfc8; }
+
+.trigger:focus,
+.open .trigger {
+  border-color: #4a26b1;
+  box-shadow: 0px 0px 0px 2px #f2edff;
+}
+
+/* States */
+.error .trigger {
+  border-color: #b60012;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+.error .trigger:focus,
+.error.open .trigger {
+  border-color: #b60012;
+  box-shadow: 0px 0px 0px 2px #ffecec;
+}
+
+.success .trigger { border-color: #16a34a; }
+.success .trigger:focus,
+.success.open .trigger {
+  border-color: #16a34a;
+  box-shadow: 0px 0px 0px 2px #dcfce7;
+}
+
+.disabled .trigger,
+.disabled .trigger:hover {
+  background: #f8f7fa;
+  border-color: #dad9df;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  cursor: not-allowed;
+  color: #c1bfc8;
+}
+
+/* ── Value / placeholder text ────────────────── */
+.value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3a3741;
+}
+
+.placeholder {
+  color: #c1bfc8;
+}
+
+/* ── Chevron icon ────────────────────────────── */
+.chevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #65626f;
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: auto;
+}
+
+.open .chevron { transform: rotate(180deg); }
+.disabled .chevron { color: #c1bfc8; }
+
+/* ── Leading icon ────────────────────────────── */
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #65626f;
+  pointer-events: none;
+}
+
+/* ── Dropdown menu ───────────────────────────── */
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: white;
+  border: 1px solid #dad9df;
+  border-radius: 8px;
+  box-shadow: 0px 8px 24px 0px rgba(58, 55, 65, 0.14);
+  overflow: hidden;
+  animation: menuIn 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Search input inside menu ────────────────── */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #f5f4f7;
+}
+
+.searchInput {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #3a3741;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.searchInput::placeholder { color: #c1bfc8; }
+
+/* ── Options list ────────────────────────────── */
+.options {
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.options::-webkit-scrollbar { width: 4px; }
+.options::-webkit-scrollbar-track { background: transparent; }
+.options::-webkit-scrollbar-thumb { background: #dad9df; border-radius: 4px; }
+
+/* ── Option item ─────────────────────────────── */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #3a3741;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+}
+
+.option:hover { background: #f8f7fa; }
+
+.optionSelected {
+  background: #f2edff;
+  color: #4a26b1;
+  font-weight: 500;
+}
+
+.optionSelected:hover { background: #ebe3ff; }
+
+.optionDisabled {
+  color: #c1bfc8;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.checkIcon {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  color: #4a26b1;
+  flex-shrink: 0;
+}
+
+/* ── Group label ─────────────────────────────── */
+.groupLabel {
+  padding: 8px 10px 4px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #c1bfc8;
+}
+
+/* ── Empty state ─────────────────────────────── */
+.empty {
+  padding: 16px 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #c1bfc8;
+  text-align: center;
+}
+
+/* ── Helper / error text ─────────────────────── */
+.helperText {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #65626f;
+}
+
+.errorText {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #b60012;
+}
+
+/* ── Wrap for relative positioning ──────────────── */
+.wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* ══════════════════════════════════════════════
+   MULTI SELECT
+   ══════════════════════════════════════════════ */
+
+/* Trigger replaces the single button — it's a div that wraps chips + input */
+.multiTrigger {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  min-height: 40px;
+  padding: 6px 10px 6px 12px;
+  background: white;
+  border: 1px solid #dad9df;
+  border-radius: 8px;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  cursor: text;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.sm .multiTrigger { min-height: 32px; padding: 4px 10px; }
+.lg .multiTrigger { min-height: 48px; padding: 8px 14px; }
+
+.multiTrigger:hover { border-color: #c1bfc8; }
+
+.multiTriggerOpen {
+  border-color: #4a26b1;
+  box-shadow: 0px 0px 0px 2px #f2edff;
+}
+
+.multiTriggerError {
+  border-color: #b60012;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+}
+
+.multiTriggerError.multiTriggerOpen {
+  border-color: #b60012;
+  box-shadow: 0px 0px 0px 2px #ffecec;
+}
+
+.multiTriggerSuccess { border-color: #16a34a; }
+.multiTriggerSuccess.multiTriggerOpen {
+  border-color: #16a34a;
+  box-shadow: 0px 0px 0px 2px #dcfce7;
+}
+
+.multiTriggerDisabled {
+  background: #f8f7fa;
+  border-color: #dad9df;
+  box-shadow: 0px 1px 4px 0px rgba(58, 55, 65, 0.12);
+  cursor: not-allowed;
+}
+
+/* Row that contains chips + inline input */
+.chipsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Individual chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 8px 0 10px;
+  background: #f2edff;
+  color: #4a26b1;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.chipRemove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #6037d3;
+  border-radius: 50%;
+  padding: 0;
+  transition: background 0.1s, color 0.1s;
+}
+
+.chipRemove:hover {
+  background: #d4c6ff;
+  color: #3a1e8f;
+}
+
+/* "+N more" overflow badge */
+.chipMore {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  background: #f5f4f7;
+  color: #65626f;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+/* Inline search input inside the multi trigger */
+.multiInput {
+  flex: 1;
+  min-width: 80px;
+  height: 22px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: #3a3741;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.multiInput::placeholder { color: #c1bfc8; }
+.multiInput:disabled { cursor: not-allowed; }
+
+/* Checkbox-style indicator in multi options */
+.multiCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #dad9df;
+  border-radius: 4px;
+  background: white;
+  flex-shrink: 0;
+  transition: border-color 0.1s, background 0.1s;
+}
+
+.multiCheckActive {
+  border-color: #4a26b1;
+  background: #4a26b1;
+  color: white;
+}

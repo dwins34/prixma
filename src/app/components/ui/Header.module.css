@@ -10,14 +10,6 @@
 
 .logo { text-decoration: none; flex-shrink: 0; }
 
-.logoIcon {
-  width: 40px; height: 40px;
-  background: #37188f;
-  border-radius: 40px;
-  display: flex; align-items: center; justify-content: center;
-  color: white; font-size: 16px; font-weight: 500;
-  font-family: var(--font-body);
-}
 
 .nav {
   display: flex; align-items: center; gap: 12px;

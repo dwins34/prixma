@@ -1,53 +1,64 @@
 'use client';
+import React from 'react';
 import Link from 'next/link';
 import Header from './components/ui/Header';
 import styles from './page.module.css';
 import { COMPONENTS } from '../config';
 
-/* ── Feature icon assets (from Figma, permanent via public folder approach) ──
-   Two types of icons in Figma:
-   - "group" icons: 24px SVG centered inside a 48px white-bordered container
-   - "full" icons: 48px image that already contains the white bg styling
-*/
-const imgIconDark    = 'https://www.figma.com/api/mcp/asset/c9473de2-3919-47d9-bd8a-d5d9b23d1f9d'; // 24px sun — bordered
-const imgIconZero    = 'https://www.figma.com/api/mcp/asset/bba8882e-d57e-40b5-a72d-2b468f51d2df'; // 48px full
-const imgIconAccess  = 'https://www.figma.com/api/mcp/asset/1301eb72-519f-4738-9fec-19f30bbac5d3'; // 24px — bordered
-const imgIconCompose = 'https://www.figma.com/api/mcp/asset/bc270abc-166c-4c11-b17c-1dbf1fb0d5cb'; // 24px — bordered
-const imgIconFigma   = 'https://www.figma.com/api/mcp/asset/6825acb0-57f9-4f8d-9def-2f0f74c342d6'; // 24px — bordered
-const imgIconTyped   = 'https://www.figma.com/api/mcp/asset/39aa3a52-d39e-4a9c-aabc-ef4717fdb257'; // 48px full
+/* ── Feature icons — inline SVGs, no external dependencies ── */
+const IconDark = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6037D3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+);
+const IconZero = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6037D3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+  </svg>
+);
+const IconAccess = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6037D3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M12 8v4l3 3"/>
+  </svg>
+);
+const IconCompose = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6037D3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+    <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+  </svg>
+);
+const IconFigma = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M8 3h5a4 4 0 0 1 0 8H8z" fill="#6037D3" fillOpacity=".15" stroke="#6037D3"/>
+    <path d="M8 11h4a4 4 0 0 1 0 8H8z" fill="#6037D3" fillOpacity=".15" stroke="#6037D3"/>
+    <circle cx="17" cy="15" r="4" fill="#6037D3" fillOpacity=".15" stroke="#6037D3"/>
+    <path d="M8 3v18" stroke="#6037D3"/>
+    <circle cx="8" cy="7" r="4" fill="#6037D3" fillOpacity=".15" stroke="#6037D3"/>
+  </svg>
+);
+const IconTyped = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6037D3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+  </svg>
+);
 
-/* bordered=true  → outer #ecf0ff + inner white/bordered 48px + 24px icon centered
-   bordered=false → outer #ecf0ff + 48px image directly (image has white bg built-in) */
 const FEATURES = [
-  { img: imgIconDark,    bordered: true,  bold: 'Dark-first',  muted: ' design',       desc: 'Every component is designed for dark interfaces first, with thoughtful light mode support baked in.' },
-  { img: imgIconZero,    bordered: false, bold: 'Zero',        muted: ' dependencies', desc: 'Pure CSS and vanilla JS. No bloated runtime, no framework lock-in. Works anywhere HTML works.' },
-  { img: imgIconAccess,  bordered: true,  bold: 'Accessible',  muted: ' by default',   desc: 'ARIA roles, keyboard navigation, and focus management are built into every interactive component.' },
-  { img: imgIconCompose, bordered: true,  bold: 'Composable',  muted: ' tokens',       desc: 'A structured token system means colors, spacing, and radii stay consistent across your entire product.' },
-  { img: imgIconFigma,   bordered: true,  bold: 'Figma',       muted: ' included',     desc: 'Every component ships with a Figma counterpart. Design and code stay perfectly in sync, always.' },
-  { img: imgIconTyped,   bordered: false, bold: 'Typed &',     muted: ' documented',   desc: 'Full TypeScript definitions and inline JSDoc on every prop. Your IDE becomes a documentation browser.', swapColors: true },
+  { icon: IconDark,    bold: 'Dark-first',  muted: ' design',       desc: 'Every component is designed for dark interfaces first, with thoughtful light mode support baked in.' },
+  { icon: IconZero,    bold: 'Zero',        muted: ' dependencies', desc: 'Pure CSS and vanilla JS. No bloated runtime, no framework lock-in. Works anywhere HTML works.' },
+  { icon: IconAccess,  bold: 'Accessible',  muted: ' by default',   desc: 'ARIA roles, keyboard navigation, and focus management are built into every interactive component.' },
+  { icon: IconCompose, bold: 'Composable',  muted: ' tokens',       desc: 'A structured token system means colors, spacing, and radii stay consistent across your entire product.' },
+  { icon: IconFigma,   bold: 'Figma',       muted: ' included',     desc: 'Every component ships with a Figma counterpart. Design and code stay perfectly in sync, always.' },
+  { icon: IconTyped,   bold: 'Typed &',     muted: ' documented',   desc: 'Full TypeScript definitions and inline JSDoc on every prop. Your IDE becomes a documentation browser.', swapColors: true },
 ];
 
 
-function FeatureIcon({ img, bordered }: { img: string; bordered: boolean }) {
+function FeatureIcon({ icon: Icon }: { icon: () => React.ReactNode }) {
   return (
     <div className={styles.iconOuter}>
-      {bordered ? (
-        /* 48px white-bordered container with 24px icon centered inside */
-        <div className={styles.iconInner}>
-          <div className={styles.iconSmallWrap}>
-            <div className={styles.iconSmallInset}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img alt="" className={styles.iconImgFull} src={img} />
-            </div>
-          </div>
-        </div>
-      ) : (
-        /* 48px image fills directly — image already has white bg styling */
-        <div className={styles.iconBare}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img alt="" className={styles.iconImgFull} src={img} />
-        </div>
-      )}
+      <div className={styles.iconInner}>
+        <Icon />
+      </div>
     </div>
   );
 }
@@ -128,7 +139,7 @@ export default function Home() {
               <div className={styles.featRow}>
                 {FEATURES.slice(0, 3).map((f, i) => (
                   <div key={f.bold} className={`${styles.featCell} ${i > 0 ? styles.featCellBorderL : ''}`}>
-                    <FeatureIcon img={f.img} bordered={f.bordered} />
+                    <FeatureIcon icon={f.icon} />
                     <div className={styles.featText}>
                       <p className={styles.featCardTitle}>
                         <span className={f.swapColors ? styles.featMuted : styles.featBold}>{f.bold}</span>
@@ -142,7 +153,7 @@ export default function Home() {
               <div className={`${styles.featRow} ${styles.featRowBorderT}`}>
                 {FEATURES.slice(3).map((f, i) => (
                   <div key={f.bold} className={`${styles.featCell} ${i > 0 ? styles.featCellBorderL : ''}`}>
-                    <FeatureIcon img={f.img} bordered={f.bordered} />
+                    <FeatureIcon icon={f.icon} />
                     <div className={styles.featText}>
                       <p className={styles.featCardTitle}>
                         <span className={f.swapColors ? styles.featMuted : styles.featBold}>{f.bold}</span>

@@ -9,6 +9,7 @@ import StepperPage       from '../sections/StepperSection';
 import SwitchPage        from '../sections/SwitchSection';
 import TogglePage        from '../sections/ToggleSection';
 import UploaderPage      from '../sections/UploaderSection';
+import SelectPage        from '../sections/SelectSection';
 
 const PAGES: Record<string, React.ComponentType> = {
   installation: InstallationPage,
@@ -21,6 +22,7 @@ const PAGES: Record<string, React.ComponentType> = {
   switch:       SwitchPage,
   toggle:       TogglePage,
   uploader:     UploaderPage,
+  select:       SelectPage,
 };
 
 export function generateStaticParams() {
